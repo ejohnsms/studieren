@@ -3,6 +3,7 @@ import Clock from './clock.jsx';
 import FoodOrderForm from './foodorderform.jsx';
 import { NumberDictionary } from './numberdictionary.jsx';
 import { NumberList } from './numberlist.jsx';
+import { ParentControl, ChildControl } from './nestedcontrols.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Toggle from './toggle.jsx';
@@ -23,6 +24,20 @@ function App() {
       <Clock />
       <Clock name="Curly" />
       <Clock name="Moe" />
+      <ParentControl
+        tl={
+          <ChildControl name="top left"/>
+        }
+        tr={
+          <ChildControl name="top right"/>
+        }
+        bl={
+          <ChildControl name="bottom left" />
+        }
+        br={
+          <ChildControl name="bottom right" />
+        }
+      />
     </div>
   );
 }
