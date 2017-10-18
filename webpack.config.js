@@ -71,14 +71,16 @@ module.exports = {
       inject: 'body',
       chunks: ['app'],
       template: './templates/index.ejs',
-      filename: 'index.html'
+      filename: 'index.html',
+      css: './assets/index.css'
     }),
     new HtmlWebpackPlugin({
       title: 'Test',
       inject: 'body',
       chunks: ['test'],
       template: './templates/index.Spec.ejs',
-      filename: 'index.spec.html'
+      filename: 'index.spec.html',
+      css: './assets/test.css'
     })
   ]
 }
