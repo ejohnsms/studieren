@@ -2,22 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 function ParentControl(props) {
-
+  // there is also the children property
   return(
-    <div class="wrapper">
+    <div className="wrapper">
       <div>
-        <span class="topLeft">
+        <span className="topLeft">
           {props.tl}
         </span>
-        <span class="topRight">
+        <span className="topRight">
           {props.tr}
         </span>
       </div>
       <div>
-        <span class="bottomLeft">
+        <span className="bottomLeft">
           {props.bl}
         </span>
-        <span class="bottomRight">
+        <span className="bottomRight">
           {props.br}
         </span>
       </div>

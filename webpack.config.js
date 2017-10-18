@@ -5,14 +5,30 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './src/app.jsx'
+    app: './src/app.jsx',
+    test: './test/app.Spec.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js'
   },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
   module: {
     rules: [
+      {
+        enforce: 'pre',
+        test: /.jsx?$/,
+        include: [
+          path.resolve(__dirname, 'app'),
+          path.resolve(__dirname, 'test')
+        ],
+        exclude: /(node_modules | bower_components)/,
+        use: {
+          loader: 'eslint-loader'
+        }
+      },
       {
         test: /\.(js|jsx)$/,
         include: [
@@ -24,6 +40,16 @@ module.exports = {
           options: {
             presets: ['env','react']
           }
+        }
+      },
+      {
+        test: /\.(js|jsx)$/,
+        include: [
+          path.resolve(__dirname, 'test')
+        ],
+        exclude: /(node_modules | bower_components)/,
+        use: {
+          loader: 'mocha-loader'
         }
       }
     ]
@@ -43,8 +69,16 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Development',
       inject: 'body',
-      chunk: ['app'],
-      template: './templates/index.ejs'
+      chunks: ['app'],
+      template: './templates/index.ejs',
+      filename: 'index.html'
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Test',
+      inject: 'body',
+      chunks: ['test'],
+      template: './templates/index.Spec.ejs',
+      filename: 'index.spec.html'
     })
   ]
 }
