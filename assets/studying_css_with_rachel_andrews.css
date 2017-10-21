@@ -1,0 +1,36 @@
+p:nth-child(2)
+{
+	background:#ff0000;
+}
+
+p:nth-child(3n+0)
+{
+	background:#00ff00;
+}
+
+.medium {
+	background: #b8c437;
+}
+@media screen and (min-width: 600px) and (max-width: 900px) {
+  .medium {
+    background: #333;
+  }
+}
+
+/*
+H1 + P -- Adjacent-Sibling Selector
+*/
+
+/*
+ul > li -- Child combinator
+*/
+
+/*
+ul ~ li -- General sibling combinator, doesn't need immediately succeed the first element
+*/
+
+nth-of-type(even)
+
+first
+last
+only
