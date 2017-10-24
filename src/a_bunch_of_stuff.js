@@ -473,6 +473,7 @@ var gem = {
 }
 
 helloMy.call(gem)
+
 // an anonymous function that takes a gem object and a parameter
 (function(msg){
   this.print = function(){
