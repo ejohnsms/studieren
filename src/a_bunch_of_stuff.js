@@ -541,7 +541,7 @@ askSmallRobotForId.call(smallRobot); // the context for this is smallRobot
 // bind can be used in a context where this is the global window object
 // to set the correct context for the object
 smallRobot.prototype.shoutId = function() {
-  window.setTimeout(this.gtId.bind(this))
+  window.setTimeout(this.getId.bind(this))
 }
 
 var r2 = new smallRobot();
