@@ -642,6 +642,47 @@ function Android(id, name) {
     return that;
 }
 
+var roy = (function Replicant(name) {
+  var parentsNames = {
+    'mom':'rose quartz',
+    'dad': 'greg'
+  }, happinessLevel = 5;
+
+  function change() {
+    fakeMemories.model = 'nexus 6';
+    fakeMemories.theInfo = nameOfDad;
+    happinessLevel = 3;
+  }
+
+  function nameOfMom() {
+    console.log('mother\'s name: ' + parentsNames['mom']);
+    console.log('happiness level: ' + happinessLevel);
+  }
+
+  function nameOfDad() {
+    console.log('father\'s name: ' + parentsNames['dad']);
+  }
+
+  var fakeMemories = {
+    'model': 'human',
+    theInfo: nameOfMom,
+    change: change
+  }
+
+  return fakeMemories;
+})(name);
+
+
+
+
+console.log(roy.model);
+roy.theInfo();
+roy.change();
+console.log(roy.model);
+roy.theInfo();
+
+
+
 var robby = Robot(122);
 console.log(robby.getId());
 
