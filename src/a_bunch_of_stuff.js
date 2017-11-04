@@ -708,3 +708,7 @@ var max = arr.reduce(function(a, b) {
 	console.log(b);
     return Math.max(a, b);
 });
+
+// using string split and array join to replace a substring in a string
+"it is a green world and a small world after all".split("world").join('planet')
+// "it is a green planet and a small planet after all"

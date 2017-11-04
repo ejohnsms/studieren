@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <button type="movie-button" name="button">
+      <video class="video-button" src="../../img/coffee_pour.mp4" loop>
+      </video>
+    </button>
+    <div class="more-info">
+
+    </div>
+    <script type="text/javascript">
+      const load = () => {
+
+        let [coffeVideo] = [...document.getElementsByTagName('video')];
+        let [moreInfo] = [...document.getElementsByClassName('more-info')];
+
+        coffeVideo.load();
+        coffeVideo.play();
+
+
+        coffeVideo.addEventListener('ended', () => {
+          this.load();
+          this.play();
+        }, false);
+
+        coffeVideo.addEventListener('click', () => {
+          moreInfo.innerHTML = "coffe was clicked";
+        }, false);
+      }
+
+      window.onload = load;
+    </script>
+  </body>
+</html>
