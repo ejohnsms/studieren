@@ -238,6 +238,19 @@ for (const e of myNumbers) {
   console.log(e);
 }
 
+// a generator function that changes the internal index
+// based on a argument value
+function* strGen(str) {
+  for (let i=0; i < str.length; i += 1) {
+      const idx = yield str[i];
+
+      if (typeof idx !== 'undefined') {
+          console.log(idx);
+          i = (idx - 1);
+      }
+  }
+}
+
 // generator function
 function* randNum(){
   var array = new Uint32Array(10);
