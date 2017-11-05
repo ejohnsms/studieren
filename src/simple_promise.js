@@ -1,13 +1,28 @@
-const oneSecondTask = (msg) => {
-    return new Promise((resolve, reject) => {
+function SimplePromise(callback) {
+  let impl = callback;
+
+  function then(resolve, reject) {
+    var re = resolve,
+        rj = reject;
+    impl.call(impl, re, rj);
+
+    return resolve();
+  }
+  return {
+    then: then
+  }
+}
+
+const threeSecondTask = (msg) => {
+    return new SimplePromise((resolve, reject) => {
         setTimeout(() => {
-            resolve('success: ' + msg);
-            // reject('failure' + msg);
-        }, 1000);
+            resolve(`${msg} and everything looks good.`);
+//             reject(`${msg} and the oven was too hot. :-/`);
+        }, 3000);
     })
 }
 
-oneSecondTask('the cookies are done').then((result) => {
+threeSecondTask('the cookies are done').then((result) => {
     console.log(result);
 }, (reason) => {
     console.log(reason);
