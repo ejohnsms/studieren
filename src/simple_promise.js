@@ -5,9 +5,8 @@ function SimplePromise(callback) {
     var re = resolve,
         rj = reject;
     impl.call(impl, re, rj);
-
-    return resolve();
   }
+  
   return {
     then: then
   }
