@@ -1,12 +1,19 @@
 function SimplePromise(callback) {
-  let impl = callback;
-
+  // the callback is the anonymous function
+  // wraps the timeout
   function then(resolve, reject) {
-    var re = resolve,
-        rj = reject;
-    impl.call(impl, re, rj);
+    // resolve and reject are anonymous
+    // functions that are passed as artguments
+    // to the original anonymous function that
+    // wraps the timeout
+    callback.call(callback, resolve, reject);
+    // then is saying, "call resolve or reject
+    // where the action is taking place
+    // the result and reason are arguments
+    // passed to their respective functions
   }
-  
+
+  // then is returned
   return {
     then: then
   }
