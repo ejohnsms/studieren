@@ -45,6 +45,21 @@ class LinkedList {
     }
     this.head = prevNode;
   }
+
+  recRev() {
+    console.log(this.head);
+    this.recrevHelper(this.head);
+  }
+
+  recrevHelper(currentNode) {
+    if (currentNode === null) {
+      return;
+    }
+
+    currentNode = currentNode.nextNode;
+
+    this.recrevHelper(currentNode);
+  }
 }
 
 const n1 = new ListNode(1);
@@ -56,4 +71,6 @@ list.addNode(n1);
 list.addNode(n2);
 list.addNode(n3);
 
-list.reverse();
+// list.reverse();
+
+list.recRev();

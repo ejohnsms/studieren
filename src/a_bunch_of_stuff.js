@@ -126,6 +126,18 @@ Array.map(callback, thisArg) // callback(element, index, Array
 // push - adds one or more items to the end of an array and returns the length
 
 // reduce - iterates over an array with current value and accumulator
+let maxChar = 'this is not my car'.split('')
+                                  .map(c => c.charCodeAt(0))
+                                  .reduce((m, c) => {
+                             		     return Math.max(m, c);
+                                  }, 0)
+
+console.log(maxChar)
+console.log(String.fromCharCode(maxChar))
+
+console.assert(maxChar === 121, 'character code for letter y')
+
+// more reduce
 Array.reduce(callback, initialValue) // callback(accumulator, currentValue, currentIndex)
 // this is usually used in conjunction with Array.map()
 const allOrders = [{'date':'2018-10-10', 'distance':10, 'OrderId':111},
