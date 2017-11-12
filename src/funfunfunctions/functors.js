@@ -1,7 +1,7 @@
 import Promise from 'bluebird'
-// a functor implements map
-// array.prototype.map
-// so array is a functor
+// a functor an object that implements map
+// Array is a functor because it implements Array.prototype.map
+
 let robots = [{name: 'rosie', show: 'jetsons'},
               {name: 'robby', show: 'lost in space'},
               {name: 'r2', show: 'star wars'}]

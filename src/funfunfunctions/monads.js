@@ -1,13 +1,13 @@
 import Bacon from 'baconjs';
 // import Promise from 'bluebird'
 
-// a monad is a type of functor
-// a functor implements map
-// a monad implements flatmap
+// a monad is a type of functor that implements flatmap
 // flatmap flattens the stream to get the values
+// fetch, promise are also monads that implement flatmap but call it "then"
 let robots = [{name: 'rosie', show: 'jetsons'},
               {name: 'robby', show: 'lost in space'},
-              {name: 'r2', show: 'star wars'}]
+              {name: 'r2', show: 'empire strikes back'},
+              {name: 'r2', show: 'a new hope'}]
 
 const getRobotShow = (name) => {
   console.log(name)

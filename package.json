@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "./node_modules/.bin/eslint",
     "test": "./node_modules/.bin/mocha",
-    "build": "./node_modules/.bin/webpack",
+    "build": "./node_modules/.bin/webpack --progress",
     "serve": "./node_modules/.bin/webpack-dev-server"
   },
   "keywords": [],

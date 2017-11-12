@@ -2,9 +2,9 @@
 // I should dig deeper into linked lists
 
 class ListNode {
-  constructor(data, nextNode = null) {
+  constructor(data, node = null) {
     this.data = data;
-    this.nextNode = nextNode;
+    this.next = node;
   }
 }
 
@@ -23,16 +23,16 @@ class LinkedList {
     }
 
     let currentNode = this.head;
-    while (currentNode.nextNode !== null) {
-      currentNode = currentNode.nextNode;
+    while (currentNode.next !== null) {
+      currentNode = currentNode.next;
     }
-    currentNode.nextNode = newNode;
+    currentNode.next = newNode;
     this.nodeCount += 1;
 
     return true;
   }
 
-  reverse() {
+  revereWithLoop() {
     let prevNode = null;
     let nextNode = null;
     let currentNode = this.head;
@@ -46,31 +46,53 @@ class LinkedList {
     this.head = prevNode;
   }
 
-  recRev() {
-    console.log(this.head);
-    this.recrevHelper(this.head);
-  }
+	reverse() {
+		this.rev(this.head);
+	}
 
-  recrevHelper(currentNode) {
-    if (currentNode === null) {
-      return;
-    }
+	rev(node, pre = null) {
+		if (node === null) {
+			this.head = pre; // when current is null then prev is the last node
+			return;
+		}
 
-    currentNode = currentNode.nextNode;
+ 		let cur = node;
+ 		let nex = cur.next
 
-    this.recrevHelper(currentNode);
-  }
+		cur.next = pre;
+		pre = cur;
+		cur = nex;
+
+		this.rev(cur, pre);
+	}
+
+	display() {
+		this.dis(this.head);
+	}
+
+	dis(node) {
+		if (node === null) {
+			return;
+		}
+		console.log(`node data: ${node.data}`);
+		this.dis(node.next);
+	}
+
+
 }
 
 const n1 = new ListNode(1);
 const n2 = new ListNode(2);
 const n3 = new ListNode(3);
 
-let list = new LinkedList();
+const list = new LinkedList();
+
 list.addNode(n1);
 list.addNode(n2);
 list.addNode(n3);
 
-// list.reverse();
+list.display();
 
-list.recRev();
+list.reverse();
+
+list.display();
