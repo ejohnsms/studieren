@@ -280,34 +280,30 @@ gen.next().value;
 
 // fibonacci
 // The Rule is xn = xn-1 + xn-2
-const fib = n => {
+const fib = (n) => {
     if ( n <= 1 ) {
       return n;
     }
     return fib(n-1) + fib(n-2);
 }
 
-fib(9)
+console.time('fib');
+console.log(fib(45))
+console.timeEnd('fib');
 
+const fibMemo = (n) => {
+  const memo = [0,1];
 
-const fib2 = n => {
-    /* Declare an array to store fibonacci numbers. */
-    let f = [];
-    f[n + 1]; // resize the array
+  for (let i = 2; i <= n; i++) {
+    memo.push(memo[i-1] + memo[i-2]);
+  }
 
-    /* 0th and 1st number of the series are 0 and 1*/
-    f.push(0);
-    f.push(1);
-
-    for (let i = 2; i <= n; i += 1)
-    {
-     /* Add the previous 2 numbers in the series
-      and store it */
-      f[i] = f[i-1] + f[i-2];
-    }
-
-    return f[n];
+  return memo;
 }
+
+console.time('fibMemo');
+console.log(fibMemo(45));
+console.timeEnd('fibMemo');
 
 const fib3 = n => {
   let a = 0, b = 1, c;
