@@ -21,10 +21,10 @@
 // 4) the app should detect when the game is done or tied an call the winner.
 
 class Player {
-  constructor(name, mark, isComputer = true) {
+  constructor(name, isComputer = true) {
     this.name = name;
-    this.mark = mark;
     this.isComputer = isComputer;
+    this.mark = '';
   }
 }
 
@@ -256,6 +256,10 @@ class Game {
     this._display.classList.remove('active');
   }
 
+  addPlayer(player) {
+    this._players.push(player);
+  }
+
   init() {
     this._display.classList.add('active');
     for (let cell of this._cells) {
@@ -263,15 +267,52 @@ class Game {
     }
 
     this._board = new Board();
-    this._players.push(new Player('spike', 'X', true));
-    this._players.push(new Player('jet', 'O', true));
   }
 
   start() {
+    this._players[0].mark = 'X';
+    this._players[1].mark = 'O';
+
     this.nextPlayer();
   }
 }
 
-const tic = new Game();
-tic.init();
-tic.start();
+document.addEventListener("DOMContentLoaded", function(event) {
+  const tic = new Game();
+
+  const startButton = document.querySelector('.start-game');
+  const addPlayerButton = document.querySelector('[name="add-player"]');
+  const playerList = document.querySelector('.player-list');
+  let playerCount = 0;
+
+  const addPlayerClick = (event) => {
+
+    let isComputer = document.querySelector('#player-type');
+    let playerName = document.querySelector('[name="player-name"]');
+    let player = new Player(playerName.value, isComputer.checked);
+
+    tic.addPlayer(player);
+    playerCount += 1;
+
+    let li = document.createElement('li');
+    li.innerText = playerName.value;
+    playerList.appendChild(li);
+
+    playerName.value = '';
+    isComputer.checked = false;
+
+    if (playerCount === 2) {
+      const userInput = document.querySelector('.add-player');
+      userInput.hidden = true;
+    }
+  }
+
+  const startGameClick = (event) => {
+    tic.init();
+    tic.start();
+  }
+
+  startButton.addEventListener('click', startGameClick, false);
+  addPlayerButton.addEventListener('click', addPlayerClick, false);
+
+});
